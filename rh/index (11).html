@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMO A HELEN</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron',sans-serif}
+body{background:#050510;color:#fff;overflow-x:hidden}
+canvas{position:fixed;top:0;left:0;z-index:-1}
+header{position:fixed;width:100%;top:0;padding:20px 8%;display:flex;justify-content:center;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);z-index:1000}
+.logo{color:#ff4fd8;font-size:1.8rem;font-weight:bold;text-shadow:0 0 15px #ff4fd8}
+.hero{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:0 10%}
+.hero h1{font-size:4.5rem;color:#00e5ff;text-shadow:0 0 10px #00e5ff,0 0 30px #00e5ff,0 0 60px #00e5ff}
+.hero h2{color:#ff4fd8;margin-top:15px}
+.hero p{max-width:800px;margin:30px auto;line-height:1.8;color:#ddd}
+.btn{display:inline-block;padding:15px 35px;border-radius:40px;text-decoration:none;color:white;background:linear-gradient(45deg,#00e5ff,#7b2cff,#ff4fd8)}
+.section{padding:120px 10%}
+.section-title{text-align:center;font-size:2.5rem;color:#00e5ff;margin-bottom:40px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:30px}
+.reveal{opacity:0;transform:translateY(60px);transition:1s}
+.reveal.active{opacity:1;transform:translateY(0)}
+footer{text-align:center;padding:40px}
+@media(max-width:768px){.hero h1{font-size:2.8rem}}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<header><div class="logo">❤️ AMO A HELEN ❤️</div></header>
+
+<section class="hero">
+<div>
+<h1>AMO A HELEN</h1>
+<h2>Mi persona favorita</h2>
+<p>Entre millones de estrellas siempre hay una que brilla más que todas. Esta página existe para recordarte lo especial que eres.</p>
+<a href="#pregunta" class="btn">Ver más ❤️</a>
+</div>
+</section>
+
+<section class="section reveal">
+<h2 class="section-title">Razones por las que eres especial</h2>
+<div class="cards">
+<div class="card"><h3>✨ Tu sonrisa</h3><p>Ilumina cualquier día.</p></div>
+<div class="card"><h3>💖 Tu forma de ser</h3><p>Eres única y especial.</p></div>
+<div class="card"><h3>🌙 Tu presencia</h3><p>Hace inolvidables los momentos simples.</p></div>
+</div>
+</section>
+
+<section class="section reveal" id="pregunta" style="text-align:center;min-height:60vh;">
+<h2 class="section-title">💖 Tengo una pregunta para ti 💖</h2>
+<h1 style="margin-bottom:40px;">¿Regresarías conmigo?</h1>
+
+<div style="position:relative;height:250px;">
+<button id="siBtn" style="padding:15px 40px;font-size:1.2rem;border:none;border-radius:30px;background:#00e5ff;color:white;cursor:pointer;">
+Sí 💖
+</button>
+
+<button id="noBtn" style="position:absolute;padding:15px 40px;font-size:1.2rem;border:none;border-radius:30px;background:#ff4fd8;color:white;cursor:pointer;left:60%;">
+No pero t amo 🥺
+</button>
+</div>
+
+<h2 id="mensaje" style="margin-top:30px;"></h2>
+</section>
+
+<footer>❤️ Hecho con cariño para Helen ❤️</footer>
+
+<script>
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=innerWidth; canvas.height=innerHeight;
+let particles=[];
+for(let i=0;i<120;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,s:Math.random()*3,v:Math.random()*1.5});}
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.s,0,Math.PI*2);
+ctx.fillStyle=["#00e5ff","#ff4fd8","#7b2cff"][Math.floor(Math.random()*3)];
+ctx.fill();
+p.y-=p.v;if(p.y<0){p.y=canvas.height;p.x=Math.random()*canvas.width;}
+});
+requestAnimationFrame(animate);
+}
+animate();
+
+function reveal(){
+document.querySelectorAll(".reveal").forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){el.classList.add("active");}
+});
+}
+addEventListener("scroll",reveal); reveal();
+
+const siBtn=document.getElementById("siBtn");
+const noBtn=document.getElementById("noBtn");
+const mensaje=document.getElementById("mensaje");
+
+siBtn.addEventListener("click",()=>{
+mensaje.innerHTML="❤️ Sabía que dirías que sí. Te quiero muchísimo ❤️";
+});
+
+noBtn.addEventListener("mouseover",()=>{
+noBtn.style.left=(Math.random()*(window.innerWidth-220))+"px";
+noBtn.style.top=(Math.random()*180)+"px";
+});
+</script>
+</body>
+</html>
