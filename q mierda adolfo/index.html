@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banannerito Delivery | Distribuidor de Camarón</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Orbitron',sans-serif;
+}
+
+body{
+    background:#050510;
+    color:white;
+    overflow-x:hidden;
+}
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+.logo{
+    color:#00e5ff;
+    font-size:1.6rem;
+    font-weight:bold;
+    text-shadow:0 0 15px #00e5ff;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ff00ff;
+    text-shadow:0 0 10px #ff00ff;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 10%;
+}
+
+.hero-content{
+    animation:fadeIn 2s ease;
+}
+
+.hero h1{
+    font-size:4rem;
+    color:#00e5ff;
+    text-shadow:
+    0 0 10px #00e5ff,
+    0 0 30px #00e5ff,
+    0 0 60px #00e5ff;
+}
+
+.hero h2{
+    color:#ff00ff;
+    margin-top:10px;
+    font-size:1.5rem;
+}
+
+.hero p{
+    margin-top:25px;
+    max-width:700px;
+    line-height:1.8;
+    color:#d9d9d9;
+}
+
+.btn{
+    margin-top:35px;
+    display:inline-block;
+    padding:15px 35px;
+    background:linear-gradient(45deg,#00e5ff,#7b2cff,#ff00ff);
+    color:white;
+    text-decoration:none;
+    border-radius:40px;
+    transition:.4s;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px #ff00ff;
+}
+
+.section{
+    padding:120px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:50px;
+    color:#00e5ff;
+    text-shadow:0 0 15px #00e5ff;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    padding:30px;
+    border-radius:20px;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px #7b2cff;
+}
+
+.card h3{
+    color:#ff00ff;
+    margin-bottom:15px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.glow{
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #00e5ff;
+    }
+    to{
+        text-shadow:
+        0 0 20px #00e5ff,
+        0 0 40px #ff00ff;
+    }
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.5rem;
+}
+
+nav{
+    display:none;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+    <div class="logo">BANANNERITO DELIVERY</div>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#productos">Productos</a>
+    </nav>
+</header>
+
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <h1 class="glow">BANANNERITO DELIVERY</h1>
+        <h2>Distribuidor Premium de Camarón</h2>
+
+        <p>
+            Tecnología, calidad y frescura conectadas en una experiencia futurista.
+            Somos especialistas en la distribución de camarón para hogares,
+            restaurantes y negocios que buscan el mejor producto del mercado.
+        </p>
+
+        <a href="#servicios" class="btn">Explorar</a>
+    </div>
+</section>
+
+<section class="section reveal" id="servicios">
+
+    <h2 class="section-title">Nuestros Servicios</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Entrega Rápida</h3>
+            <p>
+                Servicio eficiente para que el producto llegue fresco
+                y en perfectas condiciones.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Calidad Premium</h3>
+            <p>
+                Camarón seleccionado bajo estrictos estándares
+                de calidad y conservación.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Atención Personalizada</h3>
+            <p>
+                Soluciones para clientes particulares,
+                restaurantes y distribuidores.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section reveal" id="productos">
+
+    <h2 class="section-title">Productos Destacados</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Camarón Entero</h3>
+            <p>Frescura garantizada para cualquier preparación.</p>
+        </div>
+
+        <div class="card">
+            <h3>Camarón Pelado</h3>
+            <p>Ideal para restaurantes y consumo doméstico.</p>
+        </div>
+
+        <div class="card">
+            <h3>Camarón Premium</h3>
+            <p>Selección especial de alta calidad.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Banannerito Delivery | Cyberpunk Edition
+</footer>
+
+<script>
+
+/* PARTICULAS NEON */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<120;i++){
+
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+size:Math.random()*3,
+speed:Math.random()*1.5
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fillStyle="#00e5ff";
+ctx.fill();
+
+p.y-=p.speed;
+
+if(p.y<0){
+p.y=canvas.height;
+p.x=Math.random()*canvas.width;
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+window.addEventListener("resize",()=>{
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+});
+
+/* ANIMACION SCROLL */
+
+function reveal(){
+
+const reveals=document.querySelectorAll(".reveal");
+
+reveals.forEach(el=>{
+
+const windowHeight=window.innerHeight;
+const top=el.getBoundingClientRect().top;
+
+if(top<windowHeight-100){
+el.classList.add("active");
+}
+
+});
+
+}
+
+window.addEventListener("scroll",reveal);
+reveal();
+
+</script>
+
+</body>
+</html>
